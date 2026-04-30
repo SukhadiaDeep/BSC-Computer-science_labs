@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>London Student Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the London Student Hub</h1>
+        <p>Find the best student discounts in city!</p>
+    </header>
+    <main>
+        <section id="deal-for">
+            <h2>Post a New Deal</h2>
+            <input type="text" id="store-name" placeholder="Store Name(eg: Tesco,Apple)">
+            <input type="text" id ="deal-desc" placeholder="What's the discount?">
+            <button onclick="addDeal()">Post Deal</button>
+        </section>
+        <section id="deals-container">
+            <h2>Current Deals</h2>
+            <div id="deals-list">
+                <!-- Deals will be dynamically added here by JavaScript -->
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
