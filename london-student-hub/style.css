@@ -1,84 +1,98 @@
+:root {
+    --primary-blue: #007aff;
+    --success-green: #34c759;
+    --danger-red: #ff3b30;
+    --bg-gray: #f2f2f7;
+    --card-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: var(--bg-gray);
+    color: #1d1d1f;
     margin: 0;
-    padding: 20px;
+    padding: 40px 20px;
+    line-height: 1.5;
 }
 
 header {
     text-align: center;
-    padding: 40px 0;
-    background: #007aff; /* Apple Blue */
+    padding: 60px 0;
+    background: linear-gradient(135deg, #007aff, #5856d6);
     color: white;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: var(--card-shadow);
 }
 
 main {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
 #deal-form {
     background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
+h2 { font-weight: 700; margin-bottom: 10px; }
+
 input {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid #d2d2d7;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
 }
 
 button {
-    padding: 12px;
-    background-color: #34c759; /* Success Green */
+    padding: 14px;
+    background-color: var(--success-green);
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
 }
 
 .deal-card {
     background: white;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 10px;
-    border-left: 5px solid #007aff;
-}
-#deals-list {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Adds space between the Apple and Tesco cards */
-}
-
-.deal-card {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: white;
-    padding: 15px;
-    margin-top: 15px;
-    border-radius: 10px;
-    border-left: 5px solid #007aff;
+    border-left: 6px solid var(--primary-blue);
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .delete-btn {
-    background-color: #ff3b30; /* Apple Red */
-    padding: 8px 12px;
-    font-size: 0.8rem;
-    border-radius: 6px;
-    transition: background 0.3s;
-}
-
-.delete-btn:hover {
-    background-color: #d70a00;
+    background-color: var(--danger-red);
+    padding: 10px 16px;
+    font-size: 14px;
 }
