@@ -31,6 +31,14 @@ def get_deals():
     deals = cursor.fetchall()
     return jsonify(deals), 200
 
+@app.route('/delete_deal/<int:deal_id>', methods=['DELETE'])
+def delete_deal(deal_id):
+    cursor = db.cursor()
+    query = "DELETE FROM deals WHERE id = %s"
+    cursor.execute(query, (deal_id,))
+    db.commit()
+    return jsonify({"message": "Deal deleted successfully!"}), 200
+
 # 3. This MUST be at the very bottom
 if __name__ == '__main__':
     app.run(port=5000, debug=True)

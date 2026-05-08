@@ -41,14 +41,17 @@ async function loadDeals() {
         const deals = await response.json();
         
         const dealList = document.getElementById('deals-list');
-        dealList.innerHTML = ''; // Clear the list so we don't get duplicates
+        dealList.innerHTML = ''; 
 
         deals.forEach(deal => {
             const newCard = document.createElement('div');
             newCard.classList.add('deal-card');
             newCard.innerHTML = `
-                <h3>${deal.store_name}</h3>
-                <p>${deal.description}</p>
+                <div class="card-content">
+                    <h3>${deal.store_name}</h3>
+                    <p>${deal.description}</p>
+                </div>
+                <button class="delete-btn" onclick="deleteDeal(${deal.id})">Delete</button>
             `;
             dealList.appendChild(newCard);
         });
@@ -56,6 +59,22 @@ async function loadDeals() {
         console.error("Error loading deals:", error);
     }
 }
+async function deleteDeal(dealId) {
+    if (!confirm("Are you sure you want to delete this deal?")) return;
 
+    try {
+        const response = await fetch(`http://127.0.0.1:5000/delete_deal/${dealId}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            loadDeals(); // Refresh the list after deleting
+        } else {
+            alert("Failed to delete deal.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
 // Run loadDeals automatically when the page is opened
 window.onload = loadDeals;
