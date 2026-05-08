@@ -53,3 +53,9 @@ button {
     border-radius: 10px;
     border-left: 5px solid #007aff;
 }
+#deals-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adds space between the Apple and Tesco cards */
+}
